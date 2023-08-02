@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <PackageReference Include="EFCoreSecondLevelCacheInterceptor" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" />
     <PackageReference Include="System.Linq.Async" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <PrivateAssets>all</PrivateAssets>

@@ -2,9 +2,7 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
-
   <!-- Run "dotnet list package (dash,dash)outdated" to see the latest versions of each package.-->
-
   <ItemGroup Label="Package Dependencies">
     <PackageVersion Include="AutoFixture.AutoMoq" Version="4.18.0" />
     <PackageVersion Include="AutoFixture.Xunit2" Version="4.18.0" />
@@ -54,6 +52,7 @@
     <PackageVersion Include="NEbml" Version="0.11.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="PlaylistsNET" Version="1.4.0" />
+    <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
     <PackageVersion Include="prometheus-net.AspNetCore" Version="8.0.0" />
     <PackageVersion Include="prometheus-net.DotNetRuntime" Version="4.4.0" />
     <PackageVersion Include="prometheus-net" Version="8.0.1" />

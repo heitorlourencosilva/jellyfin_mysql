@@ -1,9 +1,10 @@
-﻿using System;
-using System.IO;
+using System;
 using EFCoreSecondLevelCacheInterceptor;
 using MediaBrowser.Common.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Jellyfin.Server.Implementations.Extensions;
 
@@ -31,7 +32,17 @@ public static class ServiceCollectionExtensions
         serviceCollection.AddPooledDbContextFactory<JellyfinDbContext>((serviceProvider, opt) =>
         {
             var applicationPaths = serviceProvider.GetRequiredService<IApplicationPaths>();
-            opt.UseSqlite($"Filename={Path.Combine(applicationPaths.DataPath, "jellyfin.db")}")
+            // var connectionString = Environment.GetEnvironmentVariable("JELLYFIN_CONN_STR") ?? "server=localhost;user=root;password=example;database=jellyfin";
+            // var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
+            // opt.UseMySql(connectionString, serverVersion, o => o.SchemaBehavior(MySqlSchemaBehavior.Ignore))
+            //     .AddInterceptors(serviceProvider.GetRequiredService<SecondLevelCacheInterceptor>());
+
+            var connectionString = Environment.GetEnvironmentVariable("JELLYFIN_CONN_STR") ?? "server=localhost;user=root;password=jellyfin;database=jellyfin";
+            var serverVersion = ServerVersion.AutoDetect(connectionString);
+            opt.UseMySql(connectionString, serverVersion, o => o.SchemaBehavior(MySqlSchemaBehavior.Ignore))
+                .LogTo(Console.WriteLine, LogLevel.Information)
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors()
                 .AddInterceptors(serviceProvider.GetRequiredService<SecondLevelCacheInterceptor>());
         });
 

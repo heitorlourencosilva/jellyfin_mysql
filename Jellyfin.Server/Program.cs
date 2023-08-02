@@ -250,10 +250,11 @@ namespace Jellyfin.Server
                     var context = await appHost.ServiceProvider.GetRequiredService<IDbContextFactory<JellyfinDbContext>>().CreateDbContextAsync().ConfigureAwait(false);
                     await using (context.ConfigureAwait(false))
                     {
-                        if (context.Database.IsSqlite())
-                        {
-                            await context.Database.ExecuteSqlRawAsync("PRAGMA optimize").ConfigureAwait(false);
-                        }
+                        // TODO Otimização do DB
+                        // if (context.Database.IsSqlite())
+                        // {
+                        //     await context.Database.ExecuteSqlRawAsync("PRAGMA optimize").ConfigureAwait(false);
+                        // }
                     }
                 }
 

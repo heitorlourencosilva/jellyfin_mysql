@@ -79,16 +79,17 @@ namespace Emby.Server.Implementations.ScheduledTasks.Tasks
                 var context = await _provider.CreateDbContextAsync(cancellationToken).ConfigureAwait(false);
                 await using (context.ConfigureAwait(false))
                 {
-                    if (context.Database.IsSqlite())
-                    {
-                        await context.Database.ExecuteSqlRawAsync("PRAGMA optimize", cancellationToken).ConfigureAwait(false);
-                        await context.Database.ExecuteSqlRawAsync("VACUUM", cancellationToken).ConfigureAwait(false);
-                        _logger.LogInformation("jellyfin.db optimized successfully!");
-                    }
-                    else
-                    {
-                        _logger.LogInformation("This database doesn't support optimization");
-                    }
+                    // TODO Otimização do DB
+                    // if (context.Database.IsSqlite())
+                    // {
+                    //    await context.Database.ExecuteSqlRawAsync("PRAGMA optimize", cancellationToken).ConfigureAwait(false);
+                    //    await context.Database.ExecuteSqlRawAsync("VACUUM", cancellationToken).ConfigureAwait(false);
+                    //    _logger.LogInformation("jellyfin.db optimized successfully!");
+                    // }
+                    // else
+                    // {
+                    //    _logger.LogInformation("This database doesn't support optimization");
+                    // }
                 }
             }
             catch (Exception e)
