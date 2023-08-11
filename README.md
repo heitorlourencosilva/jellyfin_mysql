@@ -6,6 +6,10 @@
 <img alt="Logo" src="/oncloudlogo.png"/>
 </p>
 
+# [Cloud Treinamentos](https://comunidadecloud.com/)
+### Oficina de Projetos 12
+### Grupo 1 - OnCloud
+
 ## Colaborador Principal
 - Heitor Lourenço Silva
 
